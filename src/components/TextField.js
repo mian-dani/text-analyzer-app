@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 
-function TextField() {
+function TextField(props) {
   // States
 
+  const bgTheme = props.barMode;
+  const textTheme = props.textMode;
   const [text, setText] = useState("");
+  // const [myStyle, setMyStyle] = useState({
+  //   backgroundColor: "white",
+  //   color: "black",
+  // });
 
-  const [myStyle, setMyStyle] = useState({
-    backgroundColor: "white",
-    color: "black",
-  });
-
-  const [buttonText, setButtonText] = useState("Enable Dark Mode");
+  // const [buttonText, setButtonText] = useState("Enable Dark Mode");
 
   // eVENTS fIRE
 
@@ -28,21 +29,21 @@ function TextField() {
     setText(event.target.value);
   };
 
-  const handleTheme = () => {
-    if (myStyle.color === "white") {
-      setMyStyle({
-        backgroundColor: "white",
-        color: "black",
-      });
-      setButtonText("Enable Dark Mode");
-    } else {
-      setMyStyle({
-        backgroundColor: "black",
-        color: "white",
-      });
-      setButtonText("Enable Light Mode");
-    }
-  };
+  // const handleTheme = () => {
+  //   if (myStyle.color === "white") {
+  //     setMyStyle({
+  //       backgroundColor: "white",
+  //       color: "black",
+  //     });
+  //     setButtonText("Enable Dark Mode");
+  //   } else {
+  //     setMyStyle({
+  //       backgroundColor: "black",
+  //       color: "white",
+  //     });
+  //     setButtonText("Enable Light Mode");
+  //   }
+  // };
 
   const handleClearText = () => {
     setText("");
@@ -63,15 +64,20 @@ function TextField() {
   // Component Return
 
   return (
-    <section style={myStyle}>
-      <section className="container">
+    // style={myStyle}
+    <section className="my-2" style={{ backgroundColor: bgTheme }}>
+      <section
+        className="container"
+        style={{ backgroundColor: bgTheme, color: textTheme }}
+      >
         {/* Text Box  */}
 
         <div className="mb-3">
-          <h1>Enter text below</h1>
+          <h1 style={{ color: textTheme }}>{props.heading}</h1>
           <textarea
             className="form-control"
-            style={myStyle}
+            style={{ backgroundColor: bgTheme, color: textTheme }}
+            // style={myStyle}
             value={text}
             // placeholder="Start writing text........."
             onChange={handleOnChange}
@@ -90,9 +96,9 @@ function TextField() {
           Convert to Lowercase
         </button>
 
-        <button className="btn btn-primary mx-2" onClick={handleTheme}>
+        {/* <button className="btn btn-primary mx-2" onClick={handleTheme}>
           {buttonText}
-        </button>
+        </button> */}
 
         <button className="btn btn-primary mx-2" onClick={handleClearText}>
           Clear Text
@@ -109,7 +115,7 @@ function TextField() {
 
       {/* Text Summary  */}
 
-      <section className="container my-3">
+      <section className="container my-3" style={{ color: textTheme }}>
         <h2>Text Summary</h2>
         <p>
           Total Words are : <b> {text.split(" ").length}</b>

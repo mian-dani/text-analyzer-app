@@ -1,9 +1,19 @@
-function Navbar() {
+// import { useState } from "react";
+
+function Navbar(props) {
+  // const [textColor, setTextColor] = useState("black");
+
+  // if (props.barMode === "white") {
+  //   setTextColor("black");
+  // } else {
+  //   setTextColor("white");
+  // }
+
   return (
     <section>
-      <nav className="navbar navbar-expand-lg bg-dark">
+      <nav className={`navbar navbar-expand-lg  bg-${props.barMode}`}>
         <div className="container-fluid">
-          <a className="navbar-brand text-white" href="/">
+          <a className={`navbar-brand text-${props.textMode}`} href="/">
             Text Box
           </a>
           <button
@@ -21,7 +31,7 @@ function Navbar() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <a
-                  className="nav-link active text-white"
+                  className={`nav-link active text-${props.textMode}`}
                   aria-current="page"
                   href="/"
                 >
@@ -29,7 +39,7 @@ function Navbar() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-white" href="/">
+                <a className={`nav-link text-${props.textMode}`} href="/">
                   Contact Us
                 </a>
               </li>
@@ -51,12 +61,16 @@ function Navbar() {
                 className="form-check-input mx-1"
                 type="checkbox"
                 role="switch"
+                onClick={props.toggleMode}
                 id="flexSwitchCheckChecked"
                 // checked
               />
-              {/* <label className="form-check-label" for="flexSwitchCheckChecked">
-                Checked switch checkbox input
-              </label> */}
+              <label
+                className={`form-check-label mx-1 text-${props.textMode}`}
+                htmlFor="flexSwitchCheckChecked"
+              >
+                Enable Dark Mode
+              </label>
             </div>
           </div>
         </div>
