@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./css/TextField.css";
 
 function TextField(props) {
   // States
@@ -18,11 +19,13 @@ function TextField(props) {
   const handleUpClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("success", "converted to upper case");
   };
 
   const handleLoClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("success", "converted to lower case");
   };
 
   const handleOnChange = (event) => {
@@ -47,6 +50,7 @@ function TextField(props) {
 
   const handleClearText = () => {
     setText("");
+    props.showAlert("success", "text cleared");
   };
 
   const handleCopyText = () => {
@@ -54,11 +58,13 @@ function TextField(props) {
     text.select();
     text.setSelectionRange(0, 9999);
     navigator.clipboard.writeText(text.value);
+    props.showAlert("success", "text copied");
   };
 
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("success", "extra spaces removed");
   };
 
   // Component Return
@@ -87,30 +93,31 @@ function TextField(props) {
         </div>
 
         {/*  Buttons  */}
+        <div className="buttons-div">
+          <button className="btn btn-primary mx-2" onClick={handleUpClick}>
+            Convert to Uppercase
+          </button>
 
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}>
-          Convert to Uppercase
-        </button>
+          <button className="btn btn-primary mx-2" onClick={handleLoClick}>
+            Convert to Lowercase
+          </button>
 
-        <button className="btn btn-primary mx-2" onClick={handleLoClick}>
-          Convert to Lowercase
-        </button>
-
-        {/* <button className="btn btn-primary mx-2" onClick={handleTheme}>
+          {/* <button className="btn btn-primary mx-2" onClick={handleTheme}>
           {buttonText}
         </button> */}
 
-        <button className="btn btn-primary mx-2" onClick={handleClearText}>
-          Clear Text
-        </button>
+          <button className="btn btn-primary mx-2" onClick={handleClearText}>
+            Clear Text
+          </button>
 
-        <button className="btn btn-primary mx-2" onClick={handleCopyText}>
-          Copy Text
-        </button>
+          <button className="btn btn-primary mx-2" onClick={handleCopyText}>
+            Copy Text
+          </button>
 
-        <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>
-          Remove Extra Spaces
-        </button>
+          <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>
+            Remove Extra Spaces
+          </button>
+        </div>
       </section>
 
       {/* Text Summary  */}

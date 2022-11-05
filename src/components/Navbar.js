@@ -1,4 +1,5 @@
 // import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar(props) {
   // const [textColor, setTextColor] = useState("black");
@@ -27,21 +28,25 @@ function Navbar(props) {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a
+                <Link
                   className={`nav-link active text-${props.textMode}`}
                   aria-current="page"
-                  href="/"
+                  to="/about"
                 >
                   About Us
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className={`nav-link text-${props.textMode}`} href="/">
+                <Link
+                  className={`nav-link text-${props.textMode}`}
+                  to="contact"
+                >
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
 
@@ -69,7 +74,7 @@ function Navbar(props) {
                 className={`form-check-label mx-1 text-${props.textMode}`}
                 htmlFor="flexSwitchCheckChecked"
               >
-                Enable Dark Mode
+                Change Theme
               </label>
             </div>
           </div>

@@ -1,0 +1,25 @@
+.icons{
+    height: 60px;
+    width: 60px;
+  }
+
+  .main-div{
+    text-align: center;
+    /* margin: 0; */
+     font-family: 'Merriweather', serif;
+    /* font-family: 'Montserrat', sans-serif; */  
+    margin-top: 10%;
+    
+    /* align-items: center; */
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between;  */
+  }
+
+
+  /* .main-div{
+    text-align: center;
+    margin: 0;
+     font-family: 'Merriweather', serif;
+    
+  } */
